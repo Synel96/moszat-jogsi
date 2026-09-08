@@ -6,7 +6,7 @@ describe("buildMeta", () => {
     const meta = buildMeta({ pathname: "/about" });
 
     expect(meta.canonicalUrl).toBe("https://example.com/about");
-    expect(meta.title).toBe("Brand Name");
+    expect(meta.title).toBe("Moszat Autósiskola");
     expect(meta.description).toContain("Replace with page-specific text.");
     expect(meta.image).toBe("https://example.com/og-image.png");
   });
@@ -18,7 +18,7 @@ describe("buildMeta", () => {
       description: "Custom description",
     });
 
-    expect(meta.title).toBe("Home | Brand Name");
+    expect(meta.title).toBe("Home | Moszat Autósiskola");
     expect(meta.description).toBe("Custom description");
   });
 });

@@ -1,7 +1,7 @@
 // https://vike.dev/Head
 
 import logoUrl from "../assets/logo.svg";
-import geistFontUrl from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
+import interFontUrl from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import { usePageContext } from "vike-react/usePageContext";
 import {
   SITE_URL,
@@ -65,8 +65,10 @@ export function Head() {
         }}
       />
 
-      {/* Preload the primary (Latin) font so it starts downloading early */}
-      <link rel="preload" href={geistFontUrl} as="font" type="font/woff2" crossOrigin="anonymous" />
+      {/* Preload the primary body font (Inter) so it starts downloading early.
+          Poppins (headings) is lower-volume text and loads via the
+          font-display: swap @font-face rules without a preload. */}
+      <link rel="preload" href={interFontUrl} as="font" type="font/woff2" crossOrigin="anonymous" />
     </>
   );
 }

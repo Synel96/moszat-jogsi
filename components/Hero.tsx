@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 
 const HERO_IMAGE_URL =
-  "https://res.cloudinary.com/dmwulp3dl/image/upload/v1788896041/pexels-mikhail-nilov-8943071_jutcle.jpg";
+  "https://res.cloudinary.com/dmwulp3dl/image/upload/v1788896789/file_0000000061a4824395adc94187373809_ezrs3n.png";
 
 export function Hero() {
   return (

@@ -26,13 +26,13 @@ export function Navbar() {
 
   const navLinkClass = (href: string) =>
     isActive(href)
-      ? "font-medium text-(--brand-on-surface)"
-      : "text-white/70 transition-colors hover:text-(--brand-on-surface)";
+      ? "font-medium text-green-900"
+      : "text-gray-600 transition-colors hover:text-green-600";
 
   return (
-    <header className="border-b border-white/10 bg-(--brand-surface) text-(--brand-on-surface) backdrop-blur supports-backdrop-filter:bg-[color-mix(in_oklch,var(--brand-surface),transparent_5%)]">
+    <header className="border-b border-gray-100 bg-white">
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
-        <a href="/" className="text-base font-semibold tracking-tight text-(--brand-on-surface)">
+        <a href="/" className="text-base font-semibold tracking-tight text-green-900">
           {BRAND_NAME}
         </a>
 
@@ -44,7 +44,8 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-2">
+          <Button className="hidden md:inline-flex">Jelentkezés</Button>
           <ThemeToggle />
           <div className="md:hidden">
             {mounted ? (
@@ -55,7 +56,7 @@ export function Navbar() {
                     size="icon"
                     aria-label="Open menu"
                     onClick={() => setOpen(true)}
-                    className="text-(--brand-on-surface) hover:bg-white/10 hover:text-(--brand-on-surface)"
+                    className="text-gray-600 hover:bg-gray-100 hover:text-green-600"
                   >
                     <span className="relative size-5">
                       <MenuIcon
@@ -71,17 +72,14 @@ export function Navbar() {
                     </span>
                   </Button>
                 </SheetTrigger>
-                <SheetContent
-                  side="right"
-                  className="w-80 border-r-white/10 bg-(--brand-surface) text-(--brand-on-surface)"
-                >
+                <SheetContent side="right" className="w-80 border-r-gray-100 bg-white">
                   {/* Kept for screen readers (Radix requires an accessible dialog title/description) but not shown visually — BRAND_NAME is already visible in the navbar behind the drawer. */}
                   <SheetHeader className="sr-only">
                     <SheetTitle>{BRAND_NAME}</SheetTitle>
                     <SheetDescription>Navigation menu</SheetDescription>
                   </SheetHeader>
 
-                  <nav className="mt-12 flex flex-col gap-1 px-4 pb-6">
+                  <nav className="mt-12 flex flex-col gap-1 px-4">
                     {NAV_LINKS.map((item) => (
                       <SheetClose asChild key={item.href}>
                         <a
@@ -89,8 +87,8 @@ export function Navbar() {
                           onClick={() => setOpen(false)}
                           className={`rounded-md px-3 py-2 text-sm ${
                             isActive(item.href)
-                              ? "bg-white/15 font-medium text-(--brand-on-surface)"
-                              : "text-white/75 hover:bg-white/10 hover:text-(--brand-on-surface)"
+                              ? "bg-green-50 font-medium text-green-900"
+                              : "text-gray-600 hover:bg-gray-50 hover:text-green-600"
                           }`}
                         >
                           {item.label}
@@ -98,6 +96,14 @@ export function Navbar() {
                       </SheetClose>
                     ))}
                   </nav>
+
+                  <div className="mt-4 px-4 pb-6">
+                    <SheetClose asChild>
+                      <Button className="w-full" onClick={() => setOpen(false)}>
+                        Jelentkezés
+                      </Button>
+                    </SheetClose>
+                  </div>
                 </SheetContent>
               </Sheet>
             ) : (
@@ -106,7 +112,7 @@ export function Navbar() {
                 size="icon"
                 aria-label="Open menu"
                 disabled
-                className="text-(--brand-on-surface) hover:bg-white/10 hover:text-(--brand-on-surface)"
+                className="text-gray-600 hover:bg-gray-100 hover:text-green-600"
               >
                 <MenuIcon className="size-5" />
               </Button>

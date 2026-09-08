@@ -19,7 +19,7 @@ export function ThemeToggle() {
         size="icon"
         aria-label="Toggle theme"
         disabled
-        className="text-(--brand-on-surface) hover:bg-white/10 hover:text-(--brand-on-surface)"
+        className="text-gray-600 hover:bg-gray-100 hover:text-green-600"
       >
         <SunIcon className="size-5" />
       </Button>

@@ -1,7 +1,8 @@
 import { MenuIcon, XIcon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { Button } from "@/components/ui/button";
+import { CtaButton } from "@/components/CtaButton";
 import { useMounted } from "@/src/hooks/use-mounted";
 import {
   Sheet,
@@ -19,6 +20,46 @@ export function Navbar() {
   const mounted = useMounted();
   const pageContext = usePageContext();
   const { urlPathname } = pageContext;
+  const headerRef = useRef<HTMLElement>(null);
+
+  // The header sits transparently over the hero and fills in with its
+  // background as the hero scrolls past it, reaching full color exactly when
+  // the hero's bottom edge meets the header. Pages without a hero start solid.
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const hero = document.querySelector<HTMLElement>("[data-hero]");
+    if (!hero) {
+      header.style.setProperty("--nav-progress", "100%");
+      return;
+    }
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const { bottom, height } = hero.getBoundingClientRect();
+      const travel = Math.max(height - header.offsetHeight, 1);
+      const progress = 1 - (bottom - header.offsetHeight) / travel;
+      const clamped = Math.min(Math.max(progress, 0), 1);
+      header.style.setProperty("--nav-progress", `${Math.round(clamped * 100)}%`);
+    };
+
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, [urlPathname]);
 
   const isActive = (href: string) =>
     href === "/" ? urlPathname === href : urlPathname.startsWith(href);
@@ -29,7 +70,10 @@ export function Navbar() {
       : "text-gray-600 transition-colors hover:text-green-600";
 
   return (
-    <header className="border-b border-gray-100 bg-white">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 border-b border-gray-100/(--nav-progress) bg-white/(--nav-progress) [--nav-progress:0%]"
+    >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6">
         <a href="/" className="text-base font-semibold tracking-tight text-green-900">
           {BRAND_NAME}
@@ -44,7 +88,7 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button className="hidden md:inline-flex">Jelentkezés</Button>
+          <CtaButton className="hidden h-9 px-4 text-sm md:inline-flex">Jelentkezés</CtaButton>
           <div className="md:hidden">
             {mounted ? (
               <Sheet open={open} onOpenChange={setOpen}>
@@ -97,9 +141,9 @@ export function Navbar() {
 
                   <div className="mt-4 px-4 pb-6">
                     <SheetClose asChild>
-                      <Button className="w-full" onClick={() => setOpen(false)}>
+                      <CtaButton className="w-full" onClick={() => setOpen(false)}>
                         Jelentkezés
-                      </Button>
+                      </CtaButton>
                     </SheetClose>
                   </div>
                 </SheetContent>

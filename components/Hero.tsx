@@ -1,3 +1,4 @@
+import { CtaButton } from "@/components/CtaButton";
 import { Button } from "@/components/ui/button";
 
 const HERO_IMAGE_URL =
@@ -5,7 +6,10 @@ const HERO_IMAGE_URL =
 
 export function Hero() {
   return (
-    <section className="relative isolate flex min-h-[560px] items-center overflow-hidden sm:min-h-[640px]">
+    <section
+      data-hero
+      className="relative isolate -mt-16 flex min-h-[624px] items-center overflow-hidden pt-16 sm:min-h-[704px]"
+    >
       <img
         src={HERO_IMAGE_URL}
         alt="Vezetéstanulás a Moszat Autósiskolánál"
@@ -22,8 +26,8 @@ export function Hero() {
           oktatókkal, rugalmas időpontokkal.
         </p>
         <div className="mt-8 flex flex-wrap gap-4">
-          <Button size="lg">Jelentkezés</Button>
-          <Button variant="outline" size="lg">
+          <CtaButton>Jelentkezés</CtaButton>
+          <Button variant="outline" size="lg" className="h-11 px-6 text-base">
             Kapcsolat
           </Button>
         </div>

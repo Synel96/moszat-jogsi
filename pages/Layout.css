@@ -9,6 +9,25 @@
 @theme {
   --font-sans: "Inter Variable", sans-serif;
   --font-heading: "Poppins", sans-serif;
+  --animate-cta-glow: cta-glow 2.8s ease-in-out infinite;
+
+  @keyframes cta-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 18px -5px var(--color-green-400);
+    }
+
+    50% {
+      box-shadow: 0 0 32px -3px var(--color-green-300);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-cta-glow {
+    animation: none;
+    box-shadow: 0 0 24px -4px var(--color-green-400);
+  }
 }
 
 /* Only the Latin subset (@fontsource ships Latin, Latin-ext, Cyrillic,
@@ -132,26 +151,31 @@ body.page-transition .page-loading-overlay {
   }
 }
 
-* {
-  border-color: var(--border);
-  box-sizing: border-box;
-}
+/* Element defaults belong in @layer base: unlayered rules outrank every
+   layered utility regardless of specificity, so leaving these unlayered would
+   make Tailwind's border-color/font utilities silently do nothing. */
+@layer base {
+  * {
+    border-color: var(--border);
+    box-sizing: border-box;
+  }
 
-body {
-  margin: 0;
-  background: var(--background);
-  color: var(--foreground);
-}
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+  }
 
-html {
-  font-family: var(--font-sans);
-}
+  html {
+    font-family: var(--font-sans);
+  }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-heading);
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+  }
 }

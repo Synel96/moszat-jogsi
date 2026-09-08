@@ -2,7 +2,6 @@ import { MenuIcon, XIcon } from "lucide-react";
 import { useState } from "react";
 import { usePageContext } from "vike-react/usePageContext";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { useMounted } from "@/src/hooks/use-mounted";
 import {
   Sheet,
@@ -46,7 +45,6 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <Button className="hidden md:inline-flex">Jelentkezés</Button>
-          <ThemeToggle />
           <div className="md:hidden">
             {mounted ? (
               <Sheet open={open} onOpenChange={setOpen}>

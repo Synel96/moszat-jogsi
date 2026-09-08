@@ -11,7 +11,6 @@ import {
   COMPANY_PHONE,
 } from "../components/site";
 import { buildMeta } from "../src/seo";
-import { THEME_BOOTSTRAP_SCRIPT } from "../src/theme";
 
 export function Head() {
   const pageContext = usePageContext() as {
@@ -29,9 +28,6 @@ export function Head() {
 
   return (
     <>
-      {/* Sets the dark/light class before hydration to avoid a flash of the wrong theme */}
-      <script dangerouslySetInnerHTML={{ __html: THEME_BOOTSTRAP_SCRIPT }} />
-
       <link rel="icon" href={logoUrl} />
       <link rel="canonical" href={meta.canonicalUrl} />
 

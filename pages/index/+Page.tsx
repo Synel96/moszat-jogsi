@@ -1,8 +1,5 @@
+import { Hero } from "@/components/Hero";
+
 export default function Page() {
-  return (
-    <div>
-      <h1>Welcome</h1>
-      <p>Your Vike app is ready!</p>
-    </div>
-  );
+  return <Hero />;
 }

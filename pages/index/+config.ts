@@ -5,7 +5,7 @@ import type { Config } from "vike/types";
 // can't import it (they run outside Vite's env replacement).
 const config: Config = {
   title: "Home",
-  description: "Starter home page description. Replace for your project.",
+  description: "Autósiskola Sopronban – tanulj meg vezetni magabiztosan a Moszat Autósiskolával.",
 };
 
 export default config;

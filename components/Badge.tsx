@@ -15,7 +15,6 @@ const badgeVariants = cva(
         accent: "bg-amber-100 text-yellow-800 [&_svg]:text-yellow-500",
         green: "bg-green-50 text-green-900",
         onGreen: "bg-green-950/10 text-green-950",
-        overlay: "bg-white/80 text-green-900 backdrop-blur-sm",
       },
     },
     defaultVariants: {

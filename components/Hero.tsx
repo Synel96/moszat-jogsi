@@ -1,6 +1,3 @@
-import { StarIcon } from "lucide-react";
-
-import { Badge } from "@/components/Badge";
 import { CtaButton } from "@/components/CtaButton";
 import { Button } from "@/components/ui/button";
 import { EMAIL_HREF, PHONE_HREF } from "./site";
@@ -22,16 +19,7 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-white/55" />
 
       <div className="mx-auto w-full max-w-6xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div className="flex flex-wrap gap-2">
-          <Badge variant="overlay">
-            <StarIcon className="text-yellow-500" />
-            17 év tapasztalat
-          </Badge>
-          <Badge variant="overlay">Rengeteg sikeres vizsga</Badge>
-          <Badge variant="overlay">Sopron és környéke</Badge>
-        </div>
-
-        <h1 className="font-heading mt-6 max-w-2xl text-4xl font-bold text-green-900 sm:text-5xl">
+        <h1 className="font-heading max-w-2xl text-4xl font-bold text-green-900 sm:text-5xl">
           Tanulj meg vezetni magabiztosan
         </h1>
         <p className="mt-6 max-w-xl text-lg text-gray-600">

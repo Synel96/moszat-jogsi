@@ -19,14 +19,16 @@ export function Hero() {
       <div className="absolute inset-0 -z-10 bg-white/55" />
 
       <div className="mx-auto w-full max-w-6xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <h1 className="font-heading max-w-2xl text-4xl font-bold text-green-900 sm:text-5xl">
+        {/* CSS-only and un-delayed on the h1: it is the LCP element, so its
+            paint must not wait for hydration or an animation-delay. */}
+        <h1 className="animate-hero-in font-heading max-w-2xl text-4xl font-bold text-green-900 sm:text-5xl">
           Tanulj meg vezetni magabiztosan
         </h1>
-        <p className="mt-6 max-w-xl text-lg text-gray-900">
+        <p className="animate-hero-in mt-6 max-w-xl text-lg text-gray-900 [animation-delay:70ms]">
           A Moszat Autósiskola Sopronban és környékén segít eljutni a jogosítványig – türelmes
           oktatással, rugalmas időpontokkal.
         </p>
-        <div className="mt-8 flex flex-wrap gap-4">
+        <div className="animate-hero-in mt-8 flex flex-wrap gap-4 [animation-delay:140ms]">
           <CtaButton asChild>
             <a href={PHONE_HREF}>Jelentkezés</a>
           </CtaButton>

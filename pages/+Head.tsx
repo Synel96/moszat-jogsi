@@ -28,6 +28,16 @@ export function Head() {
 
   return (
     <>
+      {/* Reveal-on-scroll starts hidden and is un-hidden by JS; without JS the
+          content would never appear, so force it visible. */}
+      <noscript>
+        <style
+          dangerouslySetInnerHTML={{
+            __html: "[data-reveal]{opacity:1!important;transform:none!important}",
+          }}
+        />
+      </noscript>
+
       <link rel="icon" href={logoUrl} />
       <link rel="canonical" href={meta.canonicalUrl} />
 

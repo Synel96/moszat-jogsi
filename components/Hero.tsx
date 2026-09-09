@@ -22,7 +22,7 @@ export function Hero() {
         <h1 className="font-heading max-w-2xl text-4xl font-bold text-green-900 sm:text-5xl">
           Tanulj meg vezetni magabiztosan
         </h1>
-        <p className="mt-6 max-w-xl text-lg text-gray-600">
+        <p className="mt-6 max-w-xl text-lg text-gray-900">
           A Moszat Autósiskola Sopronban és környékén segít eljutni a jogosítványig – türelmes
           oktatással, rugalmas időpontokkal.
         </p>

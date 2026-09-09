@@ -1,4 +1,5 @@
 import { CtaButton } from "@/components/CtaButton";
+import { Reveal } from "@/components/Reveal";
 import { Section, SectionHeading } from "@/components/Section";
 import { Card, CardTitle } from "@/components/ui/card";
 import { EMAIL_HREF } from "./site";
@@ -32,25 +33,29 @@ const STEPS = [
 export function ExamInfo() {
   return (
     <Section id="vizsga" className="bg-white">
-      <SectionHeading
-        title="Vizsga információk"
-        lead="Így néz ki az út a jelentkezéstől a jogosítványig."
-      />
+      <Reveal>
+        <SectionHeading
+          title="Vizsga információk"
+          lead="Így néz ki az út a jelentkezéstől a jogosítványig."
+        />
+      </Reveal>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {STEPS.map((step) => (
-          <Card key={step.title} className="border border-gray-100">
-            <CardTitle className="text-lg text-green-900">{step.title}</CardTitle>
-            <p className="text-sm text-gray-600">{step.text}</p>
-          </Card>
+        {STEPS.map((step, index) => (
+          <Reveal key={step.title} delay={index * 70}>
+            <Card className="h-full border border-gray-100">
+              <CardTitle className="text-lg text-green-900">{step.title}</CardTitle>
+              <p className="text-sm text-gray-600">{step.text}</p>
+            </Card>
+          </Reveal>
         ))}
       </div>
 
-      <div className="mt-10">
+      <Reveal className="mt-10">
         <CtaButton asChild>
           <a href={EMAIL_HREF}>Kérdésed van? Írj!</a>
         </CtaButton>
-      </div>
+      </Reveal>
     </Section>
   );
 }

@@ -1,6 +1,7 @@
 import { MapPinIcon } from "lucide-react";
 
 import { Badge } from "@/components/Badge";
+import { Reveal } from "@/components/Reveal";
 import { Section } from "@/components/Section";
 import { Button } from "@/components/ui/button";
 import { COMPANY_ADDRESS, PHONE_HREF } from "./site";
@@ -8,7 +9,7 @@ import { COMPANY_ADDRESS, PHONE_HREF } from "./site";
 export function ServiceArea() {
   return (
     <Section className="bg-green-500">
-      <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+      <Reveal className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
         <div className="max-w-xl">
           <Badge variant="accent">
             <MapPinIcon />
@@ -31,7 +32,7 @@ export function ServiceArea() {
         >
           <a href={PHONE_HREF}>Érdeklődöm</a>
         </Button>
-      </div>
+      </Reveal>
     </Section>
   );
 }

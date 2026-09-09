@@ -10,7 +10,7 @@ export function ServiceArea() {
     <Section className="bg-green-500">
       <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
         <div className="max-w-xl">
-          <Badge variant="onGreen">
+          <Badge variant="accent">
             <MapPinIcon />
             {COMPANY_ADDRESS}
           </Badge>

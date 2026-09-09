@@ -2,8 +2,14 @@ import { CtaButton } from "@/components/CtaButton";
 import { Button } from "@/components/ui/button";
 import { EMAIL_HREF, PHONE_HREF } from "./site";
 
-const HERO_IMAGE_URL =
-  "https://res.cloudinary.com/dmwulp3dl/image/upload/v1788896789/file_0000000061a4824395adc94187373809_ezrs3n.png";
+// f_auto serves AVIF/WebP where the browser supports it, q_auto picks the
+// quality; without them Cloudinary ships the original full-size PNG.
+const CLOUDINARY_UPLOAD = "https://res.cloudinary.com/dmwulp3dl/image/upload";
+const HERO_IMAGE_ID = "v1788896789/file_0000000061a4824395adc94187373809_ezrs3n.png";
+const HERO_WIDTHS = [640, 960, 1280, 1600, 2000];
+
+const heroImage = (width: number) =>
+  `${CLOUDINARY_UPLOAD}/f_auto,q_auto,w_${width}/${HERO_IMAGE_ID}`;
 
 export function Hero() {
   return (
@@ -12,8 +18,13 @@ export function Hero() {
       className="relative isolate -mt-16 flex min-h-[624px] items-center overflow-hidden pt-16 sm:min-h-[704px]"
     >
       <img
-        src={HERO_IMAGE_URL}
+        src={heroImage(1600)}
+        srcSet={HERO_WIDTHS.map((width) => `${heroImage(width)} ${width}w`).join(", ")}
+        sizes="100vw"
         alt="Vezetéstanulás a Moszat Autósiskolánál"
+        // The hero photo is the LCP candidate: prioritise it, never lazy-load it.
+        fetchPriority="high"
+        decoding="async"
         className="absolute inset-0 -z-20 h-full w-full object-cover"
       />
       <div className="absolute inset-0 -z-10 bg-white/55" />

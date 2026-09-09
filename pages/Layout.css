@@ -168,6 +168,13 @@ body.page-transition .page-loading-overlay {
 
   html {
     font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
   }
 
   h1,

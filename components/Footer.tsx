@@ -22,7 +22,7 @@ export function Footer({ brandName = BRAND_NAME }: FooterProps) {
           ))}
         </nav>
         <span>
-          {year} {brandName}. All rights reserved.
+          {year} {brandName}. Minden jog fenntartva.
         </span>
       </div>
     </footer>

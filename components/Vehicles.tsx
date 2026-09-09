@@ -42,7 +42,7 @@ export function Vehicles() {
             <CardContent className="text-sm text-gray-600">{vehicle.description}</CardContent>
             <div className="flex flex-wrap gap-2">
               {vehicle.badges.map((badge) => (
-                <Badge key={badge} className="text-xs">
+                <Badge key={badge} variant="accent" className="text-xs">
                   {badge}
                 </Badge>
               ))}

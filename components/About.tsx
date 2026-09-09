@@ -1,4 +1,4 @@
-import { StarIcon } from "lucide-react";
+import { MapPinIcon, StarIcon } from "lucide-react";
 
 import { Badge } from "@/components/Badge";
 import { CtaButton } from "@/components/CtaButton";
@@ -9,16 +9,7 @@ import { COMPANY_PHONE, EMAIL_HREF, PHONE_HREF } from "./site";
 export function About() {
   return (
     <Section id="rolam" className="bg-white">
-      <div className="flex flex-wrap gap-2">
-        <Badge variant="accent">
-          <StarIcon />
-          17 év tapasztalat
-        </Badge>
-        <Badge>Rengeteg sikeres vizsga</Badge>
-      </div>
-
       <SectionHeading
-        className="mt-6"
         title="Rólam"
         lead="Több mint 17 éve tanítok vezetni Sopronban és környékén."
       />
@@ -34,6 +25,18 @@ export function About() {
           feladatokat, amíg tényleg magabiztosan mennek. A cél nem csak a sikeres vizsga, hanem hogy
           utána egyedül is nyugodtan vezess.
         </p>
+      </div>
+
+      <div className="mt-8 flex flex-wrap gap-2">
+        <Badge variant="accent">
+          <StarIcon />
+          17 év tapasztalat
+        </Badge>
+        <Badge>Rengeteg sikeres vizsga</Badge>
+        <Badge>
+          <MapPinIcon />
+          Sopron és környéke
+        </Badge>
       </div>
 
       <div className="mt-8 flex flex-wrap gap-4">
